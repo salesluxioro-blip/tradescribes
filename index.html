@@ -1,87 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#050505" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="facebook-domain-verification" content="agxd16hflz9qu8xn4yuesu3k7ipxtw" />
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2448286918930644');
-fbq('track', 'PageView');
-</script>
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Meta Pixel Code -->
-    <title>TradeScribe — AI Operating System for Trade Businesses</title>
-    <meta name="description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business — all from one AI platform built for plumbers, electricians, HVAC, roofers, and contractors. 7-day free trial." />
-    <meta name="keywords" content="AI for trades, contractor AI, plumber software, electrician invoicing, HVAC software, roofer quote app, AI quote generator, voice to invoice, contractor CRM, trade business automation" />
-    <meta name="author" content="TradeScribe" />
-    <meta name="robots" content="index, follow" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="TradeScribe — AI Operating System for Trade Businesses" />
-    <meta property="og:description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business. Built for plumbers, electricians, HVAC, roofers, and contractors. 7-day free trial." />
-    <meta property="og:image" content="/opengraph.jpg" />
-    <meta property="og:locale" content="en_CA" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TradeScribe — AI Operating System for Trade Businesses" />
-    <meta name="twitter:description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business. AI built for trade businesses." />
-    <meta name="twitter:image" content="/opengraph.jpg" />
-
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2448286918930644');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
     <script type="module" crossorigin src="/assets/index-DvK3ykwq.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BiKMcGoC.css">
-
-    <!-- TOP PROMO BANNER: Styles -->
+    <!-- ============================================ -->
+    <!-- TOP PROMO BANNER: Styles                     -->
+    <!-- ============================================ -->
+    <!-- PROMO & SOCIAL PROOF: Styles -->
     <style>
       .ts-top-banner {
         width: 100%;
-        background-color: #22C55E;
-        color: #000000;
-        font-family: 'Inter', sans-serif;
-        font-size: 15px;
-        font-weight: 600;
-        text-align: center;
-        padding: 12px 20px;
-        letter-spacing: 0.2px;
-        position: relative;
-        z-index: 99999;
         box-shadow: 0 2px 12px rgba(34, 197, 94, 0.3);
         animation: ts-banner-slideDown 0.5s ease-out;
       }
@@ -98,6 +26,9 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         gap: 6px;
         flex-wrap: wrap;
       }
+      .ts-top-banner .ts-banner-emoji {
+        font-size: 18px;
+      }
       .ts-top-banner .ts-banner-emoji { font-size: 18px; }
       .ts-top-banner .ts-banner-code {
         display: inline-block;
@@ -111,13 +42,117 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         font-size: 15px;
       }
       .ts-top-banner .ts-banner-sep { opacity: 0.5; margin: 0 4px; }
+      .ts-top-banner .ts-banner-sep {
+        opacity: 0.5;
+        margin: 0 4px;
+      /* Star Rating Under Hero Headline */
+      @keyframes ts-fade-in {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .ts-star-rating {
+        opacity: 0;
+        animation: ts-fade-in 1s ease-out forwards;
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 16px;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+      .ts-star-rating .ts-stars {
+        color: #FBBF24; /* gold */
+        letter-spacing: 1px;
+      }
+      .ts-star-rating .ts-rating-bold {
+        color: #ffffff;
+        font-weight: 700;
+      }
+      .ts-star-rating .ts-rating-sub {
+        color: #9CA3AF; /* grey */
+        font-size: 14px;
+      }
+      /* Responsive */
+      /* Counter Under Hero CTA */
+      .ts-counter-container {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #9CA3AF; /* grey */
+        margin-top: 16px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .ts-counter-green {
+        color: #22C55E;
+        font-weight: 700;
+      }
+      /* Toast Notifications */
+      .ts-toast {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        background-color: #111111;
+        border-left: 4px solid #22C55E;
+        color: #ffffff;
+        padding: 14px 18px;
+        border-radius: 6px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        z-index: 999999;
+        max-width: 340px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        transform: translateX(-120%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .ts-toast.show {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .ts-toast-text {
+        line-height: 1.4;
+      }
+      .ts-toast-sub {
+        color: #9CA3AF;
+        font-size: 11px;
+      }
+      /* Responsive styling */
       @media (max-width: 640px) {
+        .ts-top-banner {
+          font-size: 13px;
+          padding: 10px 14px;
         .ts-top-banner { font-size: 13px; padding: 10px 14px; }
         .ts-top-banner .ts-banner-code { font-size: 13px; }
+        .ts-star-rating { font-size: 13px; margin-top: 12px; }
+        .ts-star-rating .ts-rating-sub { font-size: 12px; }
+        .ts-counter-container { font-size: 12px; margin-top: 12px; }
+        .ts-toast {
+          bottom: 16px;
+          left: 16px;
+          right: 16px;
+          max-width: calc(100% - 32px);
+        }
+        .ts-top-banner .ts-banner-code {
+          font-size: 13px;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- ============================================ -->
+    <!-- TOP PROMO BANNER: Full-width, above all content -->
+    <!-- ============================================ -->
     <!-- TOP PROMO BANNER -->
     <div class="ts-top-banner" id="ts-promo-banner">
       <div class="ts-banner-inner">
@@ -129,7 +164,159 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         <span>7-day free trial</span>
       </div>
     </div>
-
     <div id="root"></div>
+    <!-- SOCIAL PROOF ELEMENTS SCRIPT -->
+    <script>
+    (function() {
+      'use strict';
+      // --- TOAST NOTIFICATIONS ---
+      var toasts = [
+        '🔨 James from Calgary, CA 🇨🇦 just started his free trial',
+        '🔧 Mike from Houston, TX 🇺🇸 just generated his first invoice',
+        '⚡ Tyler from London, UK 🇬🇧 just signed up',
+        '🔨 Dave from Edmonton, CA 🇨🇦 just started his free trial',
+        '🪠 Ryan from Chicago, IL 🇺🇸 just sent his first invoice',
+        '🔧 Chris from Manchester, UK 🇬🇧 just signed up',
+        '⚡ Jordan from Vancouver, CA 🇨🇦 just started his free trial',
+        '🔨 Steve from Dallas, TX 🇺🇸 just generated an invoice',
+        '🪚 Liam from Birmingham, UK 🇬🇧 just started his free trial',
+        '🔧 Nathan from Toronto, CA 🇨🇦 just signed up',
+        '⚡ Brandon from New York, NY 🇺🇸 just generated his first invoice',
+        '🔨 Connor from Glasgow, UK 🇬🇧 just started his free trial',
+        '🪠 Scott from Surrey, BC 🇨🇦 just sent his first invoice',
+        '🔧 Jake from Phoenix, AZ 🇺🇸 just signed up',
+        '⚡ Callum from Bristol, UK 🇬🇧 just generated an invoice'
+      ];
+      var toastInitialized = false;
+      var currentToastIndex = 0;
+      var toastEl = null;
+      function initToastSystem() {
+        if (toastInitialized) return;
+        toastInitialized = true;
+        toastEl = document.createElement('div');
+        toastEl.className = 'ts-toast';
+        document.body.appendChild(toastEl);
+        function showNextToast() {
+          var text = toasts[currentToastIndex];
+          toastEl.innerHTML = '<div class="ts-toast-text">' + text + '</div><div class="ts-toast-sub">2 min ago</div>';
+          
+          toastEl.classList.add('show');
+          setTimeout(function() {
+            toastEl.classList.remove('show');
+          }, 4000);
+          currentToastIndex = (currentToastIndex + 1) % toasts.length;
+        }
+        // Start 5 seconds after load
+        setTimeout(function() {
+          showNextToast();
+          // Rotate every 45 seconds
+          setInterval(showNextToast, 45000);
+        }, 5000);
+      }
+      // --- STAR RATING & COUNTER DOM INJECTION ---
+      function injectSocialProof() {
+        // 1. Inject Star Rating under Hero Headline
+        var headline = findHeroHeadline();
+        if (headline && !document.querySelector('.ts-star-rating')) {
+          var rating = document.createElement('div');
+          rating.className = 'ts-star-rating';
+          rating.innerHTML = 
+            '<span class="ts-stars">⭐⭐⭐⭐⭐</span>' +
+            '<span class="ts-rating-bold">4.9/5</span>' +
+            '<span class="ts-rating-sub">· Loved by tradespeople across Canada 🇨🇦 USA 🇺🇸 and UK 🇬🇧</span>';
+          headline.parentNode.insertBefore(rating, headline.nextSibling);
+        }
+        // 2. Inject Counter under Hero CTA button
+        var cta = findHeroCta();
+        if (cta && !document.querySelector('.ts-counter-container')) {
+          var counter = document.createElement('div');
+          counter.className = 'ts-counter-container';
+          counter.innerHTML = '<span>✅ Join <span class="ts-counter-green"><span class="ts-counter-number">480</span>+</span> tradespeople across Canada, USA & UK already saving time with TradeScribes</span>';
+          
+          cta.parentNode.insertBefore(counter, cta.nextSibling);
+          initCounterAnimation();
+        }
+        // 3. Initialize toast notifications system once DOM has mounted
+        if (document.getElementById('root').children.length > 0) {
+          initToastSystem();
+        }
+      }
+      function findHeroHeadline() {
+        var h1s = document.querySelectorAll('h1');
+        for (var i = 0; i < h1s.length; i++) {
+          var text = h1s[i].textContent.toLowerCase();
+          if (text.includes('speak') || text.includes('scribe') || text.includes('write')) {
+            return h1s[i];
+          }
+        }
+        return h1s[0] || null;
+      }
+      function findHeroCta() {
+        var allLinks = document.querySelectorAll('a, button');
+        for (var i = 0; i < allLinks.length; i++) {
+          var el = allLinks[i];
+          var text = (el.textContent || '').trim().toLowerCase();
+          var rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 1.5 && rect.top > 0) {
+            if (
+              text.includes('start') ||
+              text.includes('free trial') ||
+              text.includes('try') ||
+              text.includes('sign up') ||
+              text.includes('get started') ||
+              text.includes('book') ||
+              text.includes('demo')
+            ) {
+              var styles = window.getComputedStyle(el);
+              var bgColor = styles.backgroundColor;
+              if (bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent' && rect.width > 80) {
+                return el;
+              }
+            }
+          }
+        }
+        return null;
+      }
+      function initCounterAnimation() {
+        var counterEl = document.querySelector('.ts-counter-number');
+        if (!counterEl) return;
+        
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+              entry.target.classList.add('counted');
+              animateCountUp(entry.target, 480, 500, 1500);
+            }
+          });
+        }, { threshold: 0.1 });
+        observer.observe(counterEl);
+      }
+      function animateCountUp(el, start, end, duration) {
+        var range = end - start;
+        var current = start;
+        var stepTime = Math.abs(Math.floor(duration / range));
+        var timer = setInterval(function() {
+          current += 1;
+          el.textContent = current;
+          if (current >= end) {
+            el.textContent = end;
+            clearInterval(timer);
+          }
+        }, stepTime);
+      }
+      // Set up MutationObserver to react to updates and page rendering
+      var observer = new MutationObserver(function() {
+        requestAnimationFrame(injectSocialProof);
+      });
+      var root = document.getElementById('root');
+      if (root) {
+        observer.observe(root, { childList: true, subtree: true });
+      }
+      // Run immediately & backup delays
+      setTimeout(injectSocialProof, 1000);
+      setTimeout(injectSocialProof, 3000);
+      setTimeout(injectSocialProof, 5000);
+    })();
+    </script>
   </body>
 </html>
