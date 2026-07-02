@@ -29,25 +29,20 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
     <meta name="keywords" content="AI for trades, contractor AI, plumber software, electrician invoicing, HVAC software, roofer quote app, AI quote generator, voice to invoice, contractor CRM, trade business automation" />
     <meta name="author" content="TradeScribe" />
     <meta name="robots" content="index, follow" />
-
     <meta property="og:type" content="website" />
     <meta property="og:title" content="TradeScribe — AI Operating System for Trade Businesses" />
     <meta property="og:description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business. Built for plumbers, electricians, HVAC, roofers, and contractors. 7-day free trial." />
     <meta property="og:image" content="/opengraph.jpg" />
     <meta property="og:locale" content="en_CA" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="TradeScribe — AI Operating System for Trade Businesses" />
     <meta name="twitter:description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business. AI built for trade businesses." />
     <meta name="twitter:image" content="/opengraph.jpg" />
-
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -67,8 +62,179 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
     <!-- End Meta Pixel Code -->
     <script type="module" crossorigin src="/assets/index-DvK3ykwq.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BiKMcGoC.css">
+    <!-- ============================================ -->
+    <!-- PROMO INJECTION: Styles for badge + trial line -->
+    <!-- ============================================ -->
+    <style>
+      /* Green promo banner/badge */
+      .ts-promo-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #0d9f4f 0%, #16a34a 50%, #15803d 100%);
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        padding: 10px 22px;
+        border-radius: 50px;
+        margin-bottom: 14px;
+        box-shadow: 0 0 20px rgba(22, 163, 74, 0.35), 0 4px 12px rgba(0, 0, 0, 0.3);
+        animation: ts-promo-glow 2.5s ease-in-out infinite, ts-promo-fadeIn 0.6s ease-out;
+        text-align: center;
+        width: fit-content;
+      }
+      @keyframes ts-promo-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(22, 163, 74, 0.35), 0 4px 12px rgba(0, 0, 0, 0.3); }
+        50% { box-shadow: 0 0 30px rgba(22, 163, 74, 0.55), 0 4px 16px rgba(0, 0, 0, 0.3); }
+      }
+      @keyframes ts-promo-fadeIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .ts-promo-badge code {
+        background: rgba(255,255,255,0.2);
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-family: 'Inter', monospace;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+      /* Trial text below CTA */
+      .ts-trial-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 12px;
+        animation: ts-promo-fadeIn 0.6s ease-out 0.2s both;
+        text-align: center;
+      }
+      .ts-trial-text span.ts-check {
+        color: #22c55e;
+        font-size: 16px;
+      }
+      /* Wrapper to center both elements */
+      .ts-promo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      /* Responsive adjustments */
+      @media (max-width: 640px) {
+        .ts-promo-badge {
+          font-size: 13px;
+          padding: 8px 16px;
+        }
+        .ts-trial-text {
+          font-size: 12px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+    <!-- ============================================ -->
+    <!-- PROMO INJECTION: Script to add badge + trial -->
+    <!-- ============================================ -->
+    <script>
+    (function() {
+      'use strict';
+      var INJECTED = false;
+      function injectPromo() {
+        if (INJECTED) return;
+        var root = document.getElementById('root');
+        if (!root || !root.children.length) return;
+        // Strategy: Find the first prominent CTA link/button in the hero area
+        // (usually within the first screenful of content)
+        var allLinks = root.querySelectorAll('a, button');
+        var heroCta = null;
+        for (var i = 0; i < allLinks.length; i++) {
+          var el = allLinks[i];
+          var text = (el.textContent || '').trim().toLowerCase();
+          var rect = el.getBoundingClientRect();
+          // Look for CTA-like text in the top portion of the page
+          if (rect.top < window.innerHeight * 1.2 && rect.top > 0) {
+            if (
+              text.includes('start') ||
+              text.includes('free trial') ||
+              text.includes('try') ||
+              text.includes('sign up') ||
+              text.includes('get started') ||
+              text.includes('book') ||
+              text.includes('demo')
+            ) {
+              // Prefer links/buttons that look like primary CTAs (larger, styled)
+              var styles = window.getComputedStyle(el);
+              var bgColor = styles.backgroundColor;
+              // Accept if it has a non-transparent background or looks like a button
+              if (
+                bgColor !== 'rgba(0, 0, 0, 0)' &&
+                bgColor !== 'transparent' &&
+                rect.width > 80
+              ) {
+                heroCta = el;
+                break;
+              }
+              // Fallback: take first matching link even without bg
+              if (!heroCta) heroCta = el;
+            }
+          }
+        }
+        if (!heroCta) return;
+        INJECTED = true;
+        // Find the parent container to insert around the CTA
+        var ctaParent = heroCta.parentElement;
+        // Create the promo badge (insert BEFORE the CTA button)
+        var badge = document.createElement('div');
+        badge.className = 'ts-promo-badge';
+        badge.innerHTML = '🎉 Use code <code>LAUNCH30</code> for 30% off';
+        // Create the trial text (insert AFTER the CTA button)
+        var trialText = document.createElement('div');
+        trialText.className = 'ts-trial-text';
+        trialText.innerHTML = '<span class="ts-check">✅</span> 7-day free trial — No credit card needed';
+        // Insert badge before the CTA
+        ctaParent.insertBefore(badge, heroCta);
+        // Insert trial text after the CTA
+        if (heroCta.nextSibling) {
+          ctaParent.insertBefore(trialText, heroCta.nextSibling);
+        } else {
+          ctaParent.appendChild(trialText);
+        }
+        // Center both if the parent doesn't already center
+        if (ctaParent) {
+          var parentStyle = window.getComputedStyle(ctaParent);
+          if (parentStyle.display === 'flex' || parentStyle.display === 'inline-flex') {
+            // Already flex, ensure alignment
+            ctaParent.style.alignItems = ctaParent.style.alignItems || 'center';
+          }
+        }
+      }
+      // Use MutationObserver to detect when React renders content
+      var observer = new MutationObserver(function(mutations) {
+        // Wait a frame for React to finish rendering
+        requestAnimationFrame(function() {
+          injectPromo();
+          if (INJECTED) observer.disconnect();
+        });
+      });
+      var root = document.getElementById('root');
+      if (root) {
+        observer.observe(root, { childList: true, subtree: true });
+      }
+      // Fallback: try after various delays in case MutationObserver misses it
+      setTimeout(injectPromo, 1500);
+      setTimeout(injectPromo, 3000);
+      setTimeout(injectPromo, 5000);
+      // Safety: disconnect observer after 10s regardless
+      setTimeout(function() { observer.disconnect(); }, 10000);
+    })();
+    </script>
   </body>
 </html>
