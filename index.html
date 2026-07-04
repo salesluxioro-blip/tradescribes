@@ -162,42 +162,6 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         font-weight: 700;
       }
 
-      /* Toast Notifications */
-      .ts-toast {
-        position: fixed;
-        bottom: 240px; /* Moved up to clear demo video */
-        left: 24px;
-        background-color: #111111;
-        border-left: 4px solid #22C55E;
-        color: #ffffff;
-        padding: 14px 18px;
-        border-radius: 6px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        z-index: 999999;
-        max-width: 340px;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        transform: translateX(-120%);
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-        opacity: 0;
-        pointer-events: none;
-      }
-      .ts-toast.show {
-        transform: translateX(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .ts-toast-text {
-        line-height: 1.4;
-      }
-      .ts-toast-sub {
-        color: #9CA3AF;
-        font-size: 11px;
-      }
-
       /* Chat Widget Styles */
       .ts-chat-widget {
         position: fixed;
@@ -606,12 +570,6 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         .ts-star-rating { font-size: 13px; margin-top: 12px; }
         .ts-star-rating .ts-rating-sub { font-size: 12px; }
         .ts-counter-container { font-size: 12px; margin-top: 12px; }
-        .ts-toast {
-          bottom: 16px;
-          left: 16px;
-          right: 16px;
-          max-width: calc(100% - 32px);
-        }
         .ts-chat-widget {
           bottom: 16px;
           right: 16px;
@@ -688,58 +646,6 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
     (function() {
       'use strict';
 
-      // --- TOAST NOTIFICATIONS ---
-      var toasts = [
-        '🔨 James from Calgary, CA 🇨🇦 just started his free trial',
-        '🔧 Mike from Houston, TX 🇺🇸 just generated his first invoice',
-        '⚡ Tyler from London, UK 🇬🇧 just signed up',
-        '🔨 Dave from Edmonton, CA 🇨🇦 just started his free trial',
-        '🪠 Ryan from Chicago, IL 🇺🇸 just sent his first invoice',
-        '🔧 Chris from Manchester, UK 🇬🇧 just signed up',
-        '⚡ Jordan from Vancouver, CA 🇨🇦 just started his free trial',
-        '🔨 Steve from Dallas, TX 🇺🇸 just generated an invoice',
-        '🪚 Liam from Birmingham, UK 🇬🇧 just started his free trial',
-        '🔧 Nathan from Toronto, CA 🇨🇦 just signed up',
-        '⚡ Brandon from New York, NY 🇺🇸 just generated his first invoice',
-        '🔨 Connor from Glasgow, UK 🇬🇧 just started his free trial',
-        '🪠 Scott from Surrey, BC 🇨🇦 just sent his first invoice',
-        '🔧 Jake from Phoenix, AZ 🇺🇸 just signed up',
-        '⚡ Callum from Bristol, UK 🇬🇧 just generated an invoice'
-      ];
-
-      var toastInitialized = false;
-      var currentToastIndex = 0;
-      var toastEl = null;
-
-      function initToastSystem() {
-        if (toastInitialized) return;
-        toastInitialized = true;
-
-        toastEl = document.createElement('div');
-        toastEl.className = 'ts-toast';
-        document.body.appendChild(toastEl);
-
-        function showNextToast() {
-          var text = toasts[currentToastIndex];
-          toastEl.innerHTML = '<div class="ts-toast-text">' + text + '</div><div class="ts-toast-sub">2 min ago</div>';
-          
-          toastEl.classList.add('show');
-
-          setTimeout(function() {
-            toastEl.classList.remove('show');
-          }, 4000);
-
-          currentToastIndex = (currentToastIndex + 1) % toasts.length;
-        }
-
-        // Start 5 seconds after load
-        setTimeout(function() {
-          showNextToast();
-          // Rotate every 45 seconds
-          setInterval(showNextToast, 45000);
-        }, 5000);
-      }
-
       // --- STAR RATING & COUNTER DOM INJECTION ---
       function injectSocialProof() {
         // 1. Inject Star Rating under Hero Headline
@@ -763,11 +669,6 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
           
           cta.parentNode.insertBefore(counter, cta.nextSibling);
           initCounterAnimation();
-        }
-
-        // 3. Initialize toast notifications system once DOM has mounted
-        if (document.getElementById('root').children.length > 0) {
-          initToastSystem();
         }
       }
 
