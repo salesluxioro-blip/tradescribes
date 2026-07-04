@@ -476,19 +476,6 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         background-color: #16a34a;
       }
 
-      /* Trust Badges */
-      .ts-trust-badges {
-        font-family: 'Inter', sans-serif;
-        font-size: 11px;
-        color: #6B7280;
-        text-align: center;
-        margin-top: 6px;
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-      }
-      .ts-trust-badges span { display: flex; align-items: center; gap: 4px; }
-
       /* Sticky Mobile CTA */
       .ts-sticky-cta {
         display: none;
@@ -717,15 +704,7 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
           initCounterAnimation();
         }
 
-        // 3. Trust Badges under CTA
-        if (cta && !document.querySelector('.ts-trust-badges')) {
-          var badges = document.createElement('div');
-          badges.className = 'ts-trust-badges';
-          badges.innerHTML = '<span>🔒 Secure Checkout</span><span>✅ No Credit Card Required</span>';
-          cta.parentNode.insertBefore(badges, cta.nextSibling);
-        }
-
-        // 4. Initialize toast notifications system once DOM has mounted
+        // 3. Initialize toast notifications system once DOM has mounted
         if (document.getElementById('root').children.length > 0) {
           initToastSystem();
         }
