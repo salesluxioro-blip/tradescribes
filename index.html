@@ -476,8 +476,83 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         background-color: #16a34a;
       }
 
+      /* Trust Badges */
+      .ts-trust-badges {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        color: #6B7280;
+        text-align: center;
+        margin-top: 6px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+      }
+      .ts-trust-badges span { display: flex; align-items: center; gap: 4px; }
+
+      /* Sticky Mobile CTA */
+      .ts-sticky-cta {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #111111;
+        padding: 12px 16px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        z-index: 999999;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+      }
+      .ts-sticky-cta-btn {
+        display: block;
+        width: 100%;
+        background-color: #22C55E;
+        color: #000000;
+        text-align: center;
+        padding: 14px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 15px;
+        text-decoration: none;
+        transition: transform 0.2s;
+      }
+      .ts-sticky-cta-btn:hover { transform: scale(1.02); }
+
+      /* Exit Intent Modal */
+      .ts-exit-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.85);
+        z-index: 2000000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+      }
+      .ts-exit-modal {
+        background: #111111;
+        border: 1px solid #22C55E;
+        border-radius: 12px;
+        max-width: 440px;
+        padding: 32px;
+        text-align: center;
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 20px 50px rgba(34, 197, 94, 0.15);
+        position: relative;
+        animation: ts-banner-slideDown 0.3s ease-out;
+      }
+      .ts-exit-modal h2 { margin: 0 0 12px 0; font-size: 24px; color: #22C55E; }
+      .ts-exit-modal p { color: #D1D5DB; font-size: 15px; line-height: 1.5; margin-bottom: 24px; }
+      .ts-exit-close {
+        position: absolute; top: 12px; right: 16px;
+        background: transparent; border: none; color: #9CA3AF;
+        font-size: 24px; cursor: pointer;
+      }
+
       /* Responsive styling */
       @media (max-width: 640px) {
+        .ts-sticky-cta { display: block; }
+        .ts-chat-widget { bottom: 84px; } /* Push chat up above sticky CTA */
         .ts-top-banner { font-size: 13px; padding: 10px 14px; }
         .ts-top-banner .ts-banner-code { font-size: 13px; }
         .ts-star-rating { font-size: 13px; margin-top: 12px; }
@@ -642,7 +717,15 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
           initCounterAnimation();
         }
 
-        // 3. Initialize toast notifications system once DOM has mounted
+        // 3. Trust Badges under CTA
+        if (cta && !document.querySelector('.ts-trust-badges')) {
+          var badges = document.createElement('div');
+          badges.className = 'ts-trust-badges';
+          badges.innerHTML = '<span>🔒 Secure Checkout</span><span>✅ No Credit Card Required</span>';
+          cta.parentNode.insertBefore(badges, cta.nextSibling);
+        }
+
+        // 4. Initialize toast notifications system once DOM has mounted
         if (document.getElementById('root').children.length > 0) {
           initToastSystem();
         }
@@ -918,6 +1001,51 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
       setTimeout(injectSocialProof, 1000);
       setTimeout(injectSocialProof, 3000);
       setTimeout(injectSocialProof, 5000);
+
+      // --- STICKY MOBILE CTA ---
+      var stickyCta = document.createElement('div');
+      stickyCta.className = 'ts-sticky-cta';
+      stickyCta.innerHTML = '<a href="#" class="ts-sticky-cta-btn" id="ts-mobile-cta">Start 7-Day Free Trial</a>';
+      document.body.appendChild(stickyCta);
+      
+      document.getElementById('ts-mobile-cta').onclick = function(e) {
+        e.preventDefault();
+        var mainCta = findHeroCta();
+        if (mainCta) mainCta.click();
+      };
+
+      // --- EXIT INTENT POPUP ---
+      var exitOverlay = document.createElement('div');
+      exitOverlay.className = 'ts-exit-overlay';
+      exitOverlay.innerHTML = `
+        <div class="ts-exit-modal">
+          <button class="ts-exit-close" id="ts-exit-close">&times;</button>
+          <h2>Wait! Don't leave empty-handed.</h2>
+          <p>Start your 7-day free trial now and lock in <strong>30% off for life</strong> with code <strong>LAUNCH30</strong>.</p>
+          <a href="#" class="ts-sticky-cta-btn" id="ts-exit-cta">Claim My 30% Off & Free Trial</a>
+        </div>
+      `;
+      document.body.appendChild(exitOverlay);
+
+      document.getElementById('ts-exit-close').onclick = function() {
+        exitOverlay.style.display = 'none';
+      };
+      
+      document.getElementById('ts-exit-cta').onclick = function(e) {
+        e.preventDefault();
+        exitOverlay.style.display = 'none';
+        var mainCta = findHeroCta();
+        if (mainCta) mainCta.click();
+      };
+
+      var hasShownExit = false;
+      document.addEventListener('mouseout', function(e) {
+        if (e.clientY < 50 && !hasShownExit && !localStorage.getItem('ts_exit_shown')) {
+          hasShownExit = true;
+          localStorage.setItem('ts_exit_shown', 'true');
+          exitOverlay.style.display = 'flex';
+        }
+      });
     })();
     </script>
   </body>
