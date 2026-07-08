@@ -272,7 +272,7 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         display: flex;
         flex-direction: column;
         gap: 8px;
-      }
+        }
       .ts-contact-title {
         color: #9CA3AF;
         font-size: 11px;
@@ -556,6 +556,63 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         font-size: 24px; cursor: pointer;
       }
 
+      /* FAQ Accordion */
+      .ts-faq-section {
+        max-width: 800px;
+        margin: 64px auto;
+        padding: 0 20px;
+        font-family: 'Inter', sans-serif;
+        color: #ffffff;
+      }
+      .ts-faq-title {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 32px;
+        color: #ffffff;
+      }
+      .ts-faq-item {
+        background-color: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+      .ts-faq-header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+      .ts-faq-header:hover {
+        background-color: #1a1a1a;
+      }
+      .ts-faq-icon {
+        color: #22C55E;
+        font-size: 24px;
+        line-height: 1;
+        transition: transform 0.3s ease;
+      }
+      .ts-faq-item.active .ts-faq-icon {
+        transform: rotate(45deg);
+      }
+      .ts-faq-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease;
+        background-color: #0A0A0A;
+      }
+      .ts-faq-content-inner {
+        padding: 0 20px 20px 20px;
+        color: #9CA3AF;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
       /* Responsive styling */
       @media (max-width: 640px) {
         .ts-floating-demo {
@@ -611,7 +668,7 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         <svg viewBox="0 0 24 24" id="ts-chat-icon">
           <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
         </svg>
-        <!-- Close Icon -->
+        <!-- Close Icon (Initially Hidden) -->
         <svg viewBox="0 0 24 24" id="ts-close-icon" style="display: none;">
           <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
         </svg>
@@ -630,10 +687,10 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
 
         <!-- Body -->
         <div class="ts-chat-body" id="ts-chat-body">
-          <!-- Dynamically loaded -->
+          <!-- Views will be dynamically loaded via JS -->
         </div>
 
-        <!-- Footer -->
+        <!-- Footer (Hidden in Welcome view, shown in Conversation view) -->
         <div class="ts-chat-footer" id="ts-chat-footer" style="display: none;">
           <input type="text" class="ts-chat-input" id="ts-chat-input" placeholder="Type your inquiry here..." autocomplete="off">
           <button class="ts-chat-send" id="ts-chat-send">Send</button>
@@ -841,6 +898,7 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
       }
 
       function addMessage(sender, text) {
+        // Remove suggestions chip wrapper if it exists
         var existingChips = document.querySelector('.ts-chat-suggestions');
         if (existingChips) existingChips.remove();
 
@@ -928,9 +986,94 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         if (e.key === 'Enter') sendMessage();
       };
 
+      function injectFAQ() {
+        if (document.getElementById('ts-faq-container')) return;
+        
+        var footer = document.querySelector('footer');
+        var targetContainer = footer ? footer.parentNode : document.getElementById('root');
+        
+        if (!targetContainer) return;
+        
+        var faqHTML = `
+          <div class="ts-faq-section" id="ts-faq-container">
+            <h2 class="ts-faq-title">Frequently Asked Questions</h2>
+            
+            <div class="ts-faq-item">
+              <div class="ts-faq-header">Is there really a free trial? <span class="ts-faq-icon">+</span></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes — 7 full days, no credit card required.</div></div>
+            </div>
+            
+            <div class="ts-faq-item">
+              <div class="ts-faq-header">Does it work offline? <span class="ts-faq-icon">+</span></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes — works on any job site, syncs when back in range.</div></div>
+            </div>
+            
+            <div class="ts-faq-item">
+              <div class="ts-faq-header">What trades is it built for? <span class="ts-faq-icon">+</span></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">Plumbers, electricians, HVAC, roofers, and general contractors.</div></div>
+            </div>
+            
+            <div class="ts-faq-item">
+              <div class="ts-faq-header">Can I cancel anytime? <span class="ts-faq-icon">+</span></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes — no contracts, no hidden fees, cancel in one click.</div></div>
+            </div>
+            
+            <div class="ts-faq-item">
+              <div class="ts-faq-header">What does it cost? <span class="ts-faq-icon">+</span></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">From CA$39/month — use code LAUNCH30 for 30% off.</div></div>
+            </div>
+            
+            <div class="ts-faq-item">
+              <div class="ts-faq-header">Does it work in USA and UK? <span class="ts-faq-icon">+</span></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes — available in Canada, USA and UK.</div></div>
+            </div>
+          </div>
+        `;
+        
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = faqHTML;
+        var faqEl = wrapper.firstElementChild;
+        
+        if (footer) {
+          footer.parentNode.insertBefore(faqEl, footer);
+        } else {
+          targetContainer.appendChild(faqEl);
+        }
+        
+        // Add click events
+        var items = document.querySelectorAll('.ts-faq-item');
+        items.forEach(function(item) {
+          var header = item.querySelector('.ts-faq-header');
+          header.addEventListener('click', function() {
+            var isActive = item.classList.contains('active');
+            
+            // Close all
+            items.forEach(function(i) {
+              i.classList.remove('active');
+              var content = i.querySelector('.ts-faq-content');
+              content.style.maxHeight = null;
+              var icon = i.querySelector('.ts-faq-icon');
+              icon.style.transform = 'rotate(0deg)';
+            });
+            
+            // Open clicked
+            if (!isActive) {
+              item.classList.add('active');
+              var content = item.querySelector('.ts-faq-content');
+              content.style.maxHeight = content.scrollHeight + "px";
+              var icon = item.querySelector('.ts-faq-icon');
+              icon.style.transform = 'rotate(45deg)';
+            }
+          });
+        });
+      }
+
       // Set up MutationObserver to react to updates and page rendering
       var observer = new MutationObserver(function() {
-        requestAnimationFrame(injectSocialProof);
+        requestAnimationFrame(function() {
+          injectSocialProof();
+          injectFAQ();
+        });
       });
 
       var root = document.getElementById('root');
@@ -939,9 +1082,9 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
       }
 
       // Run immediately & backup delays
-      setTimeout(injectSocialProof, 1000);
-      setTimeout(injectSocialProof, 3000);
-      setTimeout(injectSocialProof, 5000);
+      setTimeout(function() { injectSocialProof(); injectFAQ(); }, 1000);
+      setTimeout(function() { injectSocialProof(); injectFAQ(); }, 3000);
+      setTimeout(function() { injectSocialProof(); injectFAQ(); }, 5000);
 
       // --- STICKY MOBILE CTA ---
       var stickyCta = document.createElement('div');
