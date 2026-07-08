@@ -1,0 +1,7 @@
+{
+  "name": "tradescribes-site",
+  "dependencies": {
+    "nodemailer": "^6.9.13",
+    "stripe": "^15.1.0"
+  }
+}
