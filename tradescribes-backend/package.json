@@ -1,0 +1,14 @@
+{
+  "name": "tradescribes-backend",
+  "version": "1.0.0",
+  "description": "Backend for TradeScribes Stripe Webhooks",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.13",
+    "stripe": "^15.1.0"
+  }
+}
