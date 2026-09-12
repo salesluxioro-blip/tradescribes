@@ -24,20 +24,20 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
 </noscript>
 <!-- End Meta Pixel Code -->
-    <title>TradeScribe — AI Operating System for Trade Businesses</title>
-    <meta name="description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business — all from one AI platform built for plumbers, electricians, HVAC, roofers, and contractors. 7-day free trial." />
+    <title>TradeScribe â€” AI Operating System for Trade Businesses</title>
+    <meta name="description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business â€” all from one AI platform built for plumbers, electricians, HVAC, roofers, and contractors. 7-day free trial." />
     <meta name="keywords" content="AI for trades, contractor AI, plumber software, electrician invoicing, HVAC software, roofer quote app, AI quote generator, voice to invoice, contractor CRM, trade business automation" />
     <meta name="author" content="TradeScribe" />
     <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="TradeScribe — AI Operating System for Trade Businesses" />
+    <meta property="og:title" content="TradeScribe â€” AI Operating System for Trade Businesses" />
     <meta property="og:description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business. Built for plumbers, electricians, HVAC, roofers, and contractors. 7-day free trial." />
     <meta property="og:image" content="/opengraph.jpg" />
     <meta property="og:locale" content="en_CA" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TradeScribe — AI Operating System for Trade Businesses" />
+    <meta name="twitter:title" content="TradeScribe â€” AI Operating System for Trade Businesses" />
     <meta name="twitter:description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business. AI built for trade businesses." />
     <meta name="twitter:image" content="/opengraph.jpg" />
 
@@ -272,7 +272,7 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         display: flex;
         flex-direction: column;
         gap: 8px;
-        }
+      }
       .ts-contact-title {
         color: #9CA3AF;
         font-size: 11px;
@@ -312,7 +312,7 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         border-color: #22C55E;
       }
       .ts-chat-option-btn::after {
-        content: '→';
+        content: 'â†’';
         color: #22C55E;
         font-weight: bold;
       }
@@ -613,6 +613,64 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         line-height: 1.6;
       }
 
+      /* AI Receptionist Card */
+      .ts-receptionist-card {
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(0, 0, 0, 0.5));
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        border-radius: 12px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        max-width: 480px;
+        margin: 24px auto;
+        text-align: left;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        animation: ts-fade-in 1s ease-out forwards;
+      }
+      .ts-receptionist-icon {
+        font-size: 32px;
+        background: rgba(34, 197, 94, 0.2);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ts-receptionist-text {
+        flex: 1;
+        font-family: 'Inter', sans-serif;
+      }
+      .ts-receptionist-text strong {
+        color: #22C55E;
+        font-size: 16px;
+      }
+      .ts-receptionist-text span {
+        color: #D1D5DB;
+        font-size: 13px;
+        line-height: 1.4;
+        display: block;
+        margin-top: 4px;
+      }
+      .ts-receptionist-badge {
+        background-color: #22C55E;
+        color: #000;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 12px;
+      }
+      @media (max-width: 640px) {
+        .ts-receptionist-card {
+          margin: 16px;
+          flex-direction: column;
+          text-align: center;
+          gap: 12px;
+        }
+      }
+
       /* Responsive styling */
       @media (max-width: 640px) {
         .ts-floating-demo {
@@ -649,11 +707,11 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
     <!-- TOP PROMO BANNER -->
     <div class="ts-top-banner" id="ts-promo-banner">
       <div class="ts-banner-inner">
-        <span class="ts-banner-emoji">🎉</span>
-        <span>Launch Special — Use code</span>
+        <span class="ts-banner-emoji">ðŸŽ‰</span>
+        <span>Launch Special â€” Use code</span>
         <span class="ts-banner-code">LAUNCH30</span>
         <span>for 30% off</span>
-        <span class="ts-banner-sep">·</span>
+        <span class="ts-banner-sep">Â·</span>
         <span>7-day free trial</span>
       </div>
     </div>
@@ -711,9 +769,9 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
           var rating = document.createElement('div');
           rating.className = 'ts-star-rating';
           rating.innerHTML = 
-            '<span class="ts-stars">⭐⭐⭐⭐⭐</span>' +
+            '<span class="ts-stars">â­â­â­â­â­</span>' +
             '<span class="ts-rating-bold">4.9/5</span>' +
-            '<span class="ts-rating-sub">· Loved by tradespeople across Canada 🇨🇦 USA 🇺🇸 and UK 🇬🇧</span>';
+            '<span class="ts-rating-sub">Â· Loved by tradespeople across Canada ðŸ‡¨ðŸ‡¦ USA ðŸ‡ºðŸ‡¸ and UK ðŸ‡¬ðŸ‡§</span>';
           headline.parentNode.insertBefore(rating, headline.nextSibling);
         }
 
@@ -722,7 +780,7 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         if (cta && !document.querySelector('.ts-counter-container')) {
           var counter = document.createElement('div');
           counter.className = 'ts-counter-container';
-          counter.innerHTML = '<span>✅ Join <span class="ts-counter-green"><span class="ts-counter-number">480</span>+</span> tradespeople across Canada, USA & UK already saving time with TradeScribes</span>';
+          counter.innerHTML = '<span>âœ… Join <span class="ts-counter-green"><span class="ts-counter-number">480</span>+</span> tradespeople across Canada, USA & UK already saving time with TradeScribes</span>';
           
           cta.parentNode.insertBefore(counter, cta.nextSibling);
           initCounterAnimation();
@@ -825,7 +883,7 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
           return "Use the launch code <strong>LAUNCH30</strong> during checkout to save 30% on your monthly subscription!";
         }
         if (cleanText.includes('contact') || cleanText.includes('support') || cleanText.includes('email') || cleanText.includes('phone')) {
-          return "You can get in touch with us at 📧 <strong>hello@tradescribes.com</strong>. We're happy to help!";
+          return "You can get in touch with us at ðŸ“§ <strong>hello@tradescribes.com</strong>. We're happy to help!";
         }
         
         return "I can help with that! TradeScribe is built to help contractors save hours on job reporting. Could you clarify if you have questions about our <strong>Pricing</strong>, <strong>Free Trial</strong>, or <strong>Voice features</strong>?";
@@ -837,14 +895,14 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         chatBody.innerHTML = `
           <div class="ts-chat-welcome">
             <div class="ts-welcome-msg">
-              <strong>Hey there! 👋</strong><br>
+              <strong>Hey there! ðŸ‘‹</strong><br>
               Welcome to TradeScribe support. Ask us anything about our AI platform for trade businesses.
             </div>
 
             <!-- Quick Contact Card -->
             <div class="ts-quick-contact-card">
               <div class="ts-contact-title">Quick Contact Info</div>
-              <div class="ts-contact-item">📧 Email: <a href="mailto:hello@tradescribes.com">hello@tradescribes.com</a></div>
+              <div class="ts-contact-item">ðŸ“§ Email: <a href="mailto:hello@tradescribes.com">hello@tradescribes.com</a></div>
             </div>
 
             <!-- Options -->
@@ -1000,12 +1058,12 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
             
             <div class="ts-faq-item">
               <div class="ts-faq-header">Is there really a free trial? <span class="ts-faq-icon">+</span></div>
-              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes — 7 full days, no credit card required.</div></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes â€” 7 full days, no credit card required.</div></div>
             </div>
             
             <div class="ts-faq-item">
               <div class="ts-faq-header">Does it work offline? <span class="ts-faq-icon">+</span></div>
-              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes — works on any job site, syncs when back in range.</div></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes â€” works on any job site, syncs when back in range.</div></div>
             </div>
             
             <div class="ts-faq-item">
@@ -1015,17 +1073,17 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
             
             <div class="ts-faq-item">
               <div class="ts-faq-header">Can I cancel anytime? <span class="ts-faq-icon">+</span></div>
-              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes — no contracts, no hidden fees, cancel in one click.</div></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes â€” no contracts, no hidden fees, cancel in one click.</div></div>
             </div>
             
             <div class="ts-faq-item">
               <div class="ts-faq-header">What does it cost? <span class="ts-faq-icon">+</span></div>
-              <div class="ts-faq-content"><div class="ts-faq-content-inner">From CA$39/month — use code LAUNCH30 for 30% off.</div></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">From CA$39/month â€” use code LAUNCH30 for 30% off.</div></div>
             </div>
             
             <div class="ts-faq-item">
               <div class="ts-faq-header">Does it work in USA and UK? <span class="ts-faq-icon">+</span></div>
-              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes — available in Canada, USA and UK.</div></div>
+              <div class="ts-faq-content"><div class="ts-faq-content-inner">Yes â€” available in Canada, USA and UK.</div></div>
             </div>
           </div>
         `;
@@ -1068,11 +1126,41 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         });
       }
 
+      function injectVoiceReceptionistCard() {
+        if (document.getElementById('ts-receptionist-card')) return;
+        
+        var cta = findHeroCta();
+        if (!cta) return;
+        
+        var cardHTML = `
+          <div class="ts-receptionist-card" id="ts-receptionist-card">
+            <div class="ts-receptionist-icon">ðŸ“ž</div>
+            <div class="ts-receptionist-text">
+              <strong>New: AI Voice Receptionist</strong><br>
+              <span>AI answers your missed calls 24/7 and books jobs automatically.</span>
+            </div>
+            <div class="ts-receptionist-badge">Included</div>
+          </div>
+        `;
+        
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = cardHTML;
+        var cardEl = wrapper.firstElementChild;
+        
+        var counter = document.querySelector('.ts-counter-container');
+        if (counter) {
+          counter.parentNode.insertBefore(cardEl, counter.nextSibling);
+        } else {
+          cta.parentNode.insertBefore(cardEl, cta.nextSibling);
+        }
+      }
+
       // Set up MutationObserver to react to updates and page rendering
       var observer = new MutationObserver(function() {
         requestAnimationFrame(function() {
           injectSocialProof();
           injectFAQ();
+          injectVoiceReceptionistCard();
         });
       });
 
@@ -1082,9 +1170,9 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
       }
 
       // Run immediately & backup delays
-      setTimeout(function() { injectSocialProof(); injectFAQ(); }, 1000);
-      setTimeout(function() { injectSocialProof(); injectFAQ(); }, 3000);
-      setTimeout(function() { injectSocialProof(); injectFAQ(); }, 5000);
+      setTimeout(function() { injectSocialProof(); injectFAQ(); injectVoiceReceptionistCard(); }, 1000);
+      setTimeout(function() { injectSocialProof(); injectFAQ(); injectVoiceReceptionistCard(); }, 3000);
+      setTimeout(function() { injectSocialProof(); injectFAQ(); injectVoiceReceptionistCard(); }, 5000);
 
       // --- STICKY MOBILE CTA ---
       var stickyCta = document.createElement('div');
@@ -1157,10 +1245,12 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
       }
     })();
     </script>
-<!-- FIREBASE SSO IMPLEMENTATION -->
+
+    <!-- FIREBASE SSO IMPLEMENTATION -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
       import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
       const firebaseConfig = {
         apiKey: "AIzaSyBCDXKN9_Aco_OyGniee9EnloE71ROCV0s",
         authDomain: "tradescribes.firebaseapp.com",
@@ -1169,9 +1259,11 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
         messagingSenderId: "65617962237",
         appId: "1:65617962237:web:f207bb4c9ef30922d7ca94"
       };
+
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const provider = new GoogleAuthProvider();
+
       function handleGoogleSignIn(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -1193,54 +1285,10 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
             console.error("Error signing in: ", error);
           });
       }
-      // Override the Hero CTA and Mobile CTA to trigger Google Sign In
-      setTimeout(() => {
-        // Find hero CTA
-        const allLinks = document.querySelectorAll('a, button');
-        let heroCta = null;
-        for (let i = 0; i < allLinks.length; i++) {
-          const text = (allLinks[i].textContent || '').trim().toLowerCase();
-          const rect = allLinks[i].getBoundingClientRect();
-          if (rect.top < window.innerHeight * 1.5 && rect.top > 0) {
-            if (text.includes('start') || text.includes('free trial') || text.includes('try') || text.includes('sign up')) {
-              heroCta = allLinks[i];
-              break;
-            }
-          }
-        }
-        if (heroCta) {
-          // Store original URL
-          window.tsOriginalStripeUrl = heroCta.href || heroCta.getAttribute('href');
-          
-          // Change appearance to Google style
-          heroCta.innerHTML = '<span style="display:flex;align-items:center;justify-content:center;gap:8px;"><svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/><path d="M1 1h22v22H1z" fill="none"/></svg>Continue with Google</span>';
-          
-          heroCta.removeAttribute('href');
-          heroCta.style.backgroundColor = '#ffffff';
-          heroCta.style.color = '#000000';
-          heroCta.style.border = '1px solid #d2d2d2';
-          
-          heroCta.addEventListener('click', handleGoogleSignIn);
-        }
-        // Update mobile CTA
-        const mobileCta = document.getElementById('ts-mobile-cta');
-        if (mobileCta) {
-          mobileCta.innerHTML = '<span style="display:flex;align-items:center;justify-content:center;gap:8px;"><svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/><path d="M1 1h22v22H1z" fill="none"/></svg>Continue with Google</span>';
-          mobileCta.style.backgroundColor = '#ffffff';
-          mobileCta.style.color = '#000000';
-          mobileCta.addEventListener('click', handleGoogleSignIn);
-        }
-        
-        // Update exit CTA
-        const exitCta = document.getElementById('ts-exit-cta');
-        if (exitCta) {
-          exitCta.innerHTML = 'Continue with Google';
-          exitCta.style.backgroundColor = '#ffffff';
-          exitCta.style.color = '#000000';
-          exitCta.addEventListener('click', handleGoogleSignIn);
-        }
-      }, 2000);
-            // --- NEW: Observe the DOM to inject Google button into the "Sign in" modal ---
+
+
+
+      // --- NEW: Observe the DOM to inject Google button into the "Sign in" modal ---
       const observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
           if (mutation.addedNodes.length) {
@@ -1253,38 +1301,68 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
             // If the modal is present and we haven't already injected the Google button
             if (emailInput && submitBtn && !document.getElementById('ts-modal-google-btn')) {
               
-              // Hide the original email input, its label, and the original submit button
-              emailInput.style.display = 'none';
-              submitBtn.style.display = 'none';
+              // We DO NOT hide the original email input or submit button anymore!
+              // Instead, we create a container for the Google button and an "OR" divider
               
-              const label = document.querySelector('label');
-              if (label && label.textContent.includes('EMAIL')) {
-                label.style.display = 'none';
-              }
+              const ssoContainer = document.createElement('div');
+              ssoContainer.id = 'ts-modal-google-btn';
+              ssoContainer.style.width = '100%';
+              ssoContainer.style.marginBottom = '20px';
               
               // Create the new Google button
               const googleBtn = document.createElement('button');
-              googleBtn.id = 'ts-modal-google-btn';
-              googleBtn.innerHTML = '<span style="display:flex;align-items:center;justify-content:center;gap:8px;"><svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/><path d="M1 1h22v22H1z" fill="none"/></svg>Continue with Google</span>';
+              googleBtn.innerHTML = '<span style="display:flex;align-items:center;justify-content:center;gap:12px;"><svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/><path d="M1 1h22v22H1z" fill="none"/></svg>Continue with Google</span>';
               
-              // Style the button to fit the modal perfectly
+              // Style the button to look exactly like the ChatGPT example
               googleBtn.style.backgroundColor = '#ffffff';
               googleBtn.style.color = '#000000';
-              googleBtn.style.border = 'none';
+              googleBtn.style.border = '1px solid #d2d2d2';
               googleBtn.style.width = '100%';
-              googleBtn.style.padding = '14px';
+              googleBtn.style.padding = '12px';
               googleBtn.style.borderRadius = '8px';
               googleBtn.style.cursor = 'pointer';
-              googleBtn.style.fontWeight = '700';
+              googleBtn.style.fontWeight = '500';
               googleBtn.style.fontSize = '16px';
-              googleBtn.style.marginTop = '16px';
               googleBtn.style.fontFamily = 'Inter, sans-serif';
+              googleBtn.style.transition = 'background-color 0.2s';
+              googleBtn.onmouseover = () => googleBtn.style.backgroundColor = '#f7f7f7';
+              googleBtn.onmouseout = () => googleBtn.style.backgroundColor = '#ffffff';
               
               // Trigger the Google Sign in!
               googleBtn.addEventListener('click', handleGoogleSignIn);
               
-              // Insert it into the modal
-              submitBtn.parentNode.insertBefore(googleBtn, submitBtn);
+              // Create the "OR" divider
+              const divider = document.createElement('div');
+              divider.innerHTML = '<span style="background:#111; padding:0 10px; color:#9CA3AF; font-size:12px;">OR</span>';
+              divider.style.display = 'flex';
+              divider.style.alignItems = 'center';
+              divider.style.justifyContent = 'center';
+              divider.style.textAlign = 'center';
+              divider.style.marginTop = '20px';
+              divider.style.marginBottom = '8px';
+              divider.style.position = 'relative';
+              divider.style.fontFamily = 'Inter, sans-serif';
+              
+              // Add a line behind the OR text
+              const line = document.createElement('div');
+              line.style.position = 'absolute';
+              line.style.top = '50%';
+              line.style.left = '0';
+              line.style.right = '0';
+              line.style.height = '1px';
+              line.style.backgroundColor = '#333';
+              line.style.zIndex = '-1';
+              divider.appendChild(line);
+              
+              ssoContainer.appendChild(googleBtn);
+              ssoContainer.appendChild(divider);
+              
+              // Insert the Google button and divider ABOVE the email input container
+              // We find the parent container of the email input to insert before it
+              const label = document.querySelector('label');
+              const targetElement = label && label.textContent.includes('EMAIL') ? label : emailInput;
+              
+              targetElement.parentNode.insertBefore(ssoContainer, targetElement);
             }
           }
         }
