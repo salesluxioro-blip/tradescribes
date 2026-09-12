@@ -67,7 +67,9 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
     <!-- End Meta Pixel Code -->
     <script type="module" crossorigin src="/assets/index-DvK3ykwq.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BiKMcGoC.css">
-
+  </head>
+  <body>
+    <div id="root"></div>
 
     <!-- FIREBASE SSO IMPLEMENTATION -->
     <script type="module">
@@ -106,8 +108,6 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
             alert("Error: " + error.message);
           });
       }
-
-
 
       // --- NEW: Observe the DOM to inject Google button into the "Sign in" modal ---
       const observer = new MutationObserver((mutations) => {
