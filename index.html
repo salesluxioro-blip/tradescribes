@@ -1157,5 +1157,89 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
       }
     })();
     </script>
+<!-- FIREBASE SSO IMPLEMENTATION -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyBCDXKN9_Aco_OyGniee9EnloE71ROCV0s",
+        authDomain: "tradescribes.firebaseapp.com",
+        projectId: "tradescribes",
+        storageBucket: "tradescribes.firebasestorage.app",
+        messagingSenderId: "65617962237",
+        appId: "1:65617962237:web:f207bb4c9ef30922d7ca94"
+      };
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+      function handleGoogleSignIn(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const user = result.user;
+            console.log("Successfully signed in: ", user.email);
+            // After successful auth, redirect to the original stripe link
+            const stripeUrl = window.tsOriginalStripeUrl;
+            if (stripeUrl && stripeUrl !== '#' && stripeUrl !== '') {
+              window.location.href = stripeUrl;
+            } else {
+              // Fallback
+              alert("Signed in successfully! Redirecting to checkout...");
+            }
+          })
+          .catch((error) => {
+            console.error("Error signing in: ", error);
+          });
+      }
+      // Override the Hero CTA and Mobile CTA to trigger Google Sign In
+      setTimeout(() => {
+        // Find hero CTA
+        const allLinks = document.querySelectorAll('a, button');
+        let heroCta = null;
+        for (let i = 0; i < allLinks.length; i++) {
+          const text = (allLinks[i].textContent || '').trim().toLowerCase();
+          const rect = allLinks[i].getBoundingClientRect();
+          if (rect.top < window.innerHeight * 1.5 && rect.top > 0) {
+            if (text.includes('start') || text.includes('free trial') || text.includes('try') || text.includes('sign up')) {
+              heroCta = allLinks[i];
+              break;
+            }
+          }
+        }
+        if (heroCta) {
+          // Store original URL
+          window.tsOriginalStripeUrl = heroCta.href || heroCta.getAttribute('href');
+          
+          // Change appearance to Google style
+          heroCta.innerHTML = '<span style="display:flex;align-items:center;justify-content:center;gap:8px;"><svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/><path d="M1 1h22v22H1z" fill="none"/></svg>Continue with Google</span>';
+          
+          heroCta.removeAttribute('href');
+          heroCta.style.backgroundColor = '#ffffff';
+          heroCta.style.color = '#000000';
+          heroCta.style.border = '1px solid #d2d2d2';
+          
+          heroCta.addEventListener('click', handleGoogleSignIn);
+        }
+        // Update mobile CTA
+        const mobileCta = document.getElementById('ts-mobile-cta');
+        if (mobileCta) {
+          mobileCta.innerHTML = '<span style="display:flex;align-items:center;justify-content:center;gap:8px;"><svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/><path d="M1 1h22v22H1z" fill="none"/></svg>Continue with Google</span>';
+          mobileCta.style.backgroundColor = '#ffffff';
+          mobileCta.style.color = '#000000';
+          mobileCta.addEventListener('click', handleGoogleSignIn);
+        }
+        
+        // Update exit CTA
+        const exitCta = document.getElementById('ts-exit-cta');
+        if (exitCta) {
+          exitCta.innerHTML = 'Continue with Google';
+          exitCta.style.backgroundColor = '#ffffff';
+          exitCta.style.color = '#000000';
+          exitCta.addEventListener('click', handleGoogleSignIn);
+        }
+      }, 2000);
+    </script>
   </body>
 </html>
