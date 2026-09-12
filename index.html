@@ -98,8 +98,8 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
             const user = result.user;
             console.log("Successfully signed in: ", user.email);
             
-            // Redirect the user to Stripe Checkout!
-            window.location.href = "https://buy.stripe.com/bJe9ATahdfLYauqfJ68N200";
+            // Redirect the user to Stripe Checkout with the LAUNCH30 coupon automatically applied!
+            window.location.href = "https://buy.stripe.com/bJe9ATahdfLYauqfJ68N200?prefilled_promo_code=LAUNCH30";
             
           })
           .catch((error) => {
