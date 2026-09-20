@@ -46,7 +46,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -138,6 +138,16 @@
       const auth = getAuth(app);
       const provider = new GoogleAuthProvider();
 
+      // Map of all 3 plans to their respective Stripe checkout links
+      const STRIPE_LINKS = {
+        'starter': 'https://buy.stripe.com/aFa14n4WTczMauq1Sg8N201?prefilled_promo_code=LAUNCH30',
+        'professional': 'https://buy.stripe.com/8x2cN5ext0R4gSOcwU8N202?prefilled_promo_code=LAUNCH30',
+        'business': 'https://buy.stripe.com/8x214n3SP1V89qm40o8N203?prefilled_promo_code=LAUNCH30'
+      };
+
+      // Default selected plan (updated when clicking any plan button)
+      window.tsSelectedPlan = 'starter';
+
       function handleGoogleSignIn(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -152,8 +162,9 @@
               fbq('track', 'InitiateCheckout');
             }
             
-            // Redirect the user to Stripe Checkout with the LAUNCH30 coupon automatically applied!
-            window.location.href = "https://buy.stripe.com/aFa14n4WTczMauq1Sg8N201?prefilled_promo_code=LAUNCH30";
+            // Redirect dynamically to the chosen plan's checkout page!
+            const targetUrl = STRIPE_LINKS[window.tsSelectedPlan || 'starter'] || STRIPE_LINKS['starter'];
+            window.location.href = targetUrl;
             
           })
           .catch((error) => {
@@ -229,7 +240,6 @@
               ssoContainer.appendChild(divider);
               
               // Insert the Google button and divider ABOVE the email input container
-              // We find the parent container of the email input to insert before it
               const label = document.querySelector('label');
               const targetElement = label && label.textContent.includes('EMAIL') ? label : emailInput;
               
@@ -306,13 +316,32 @@
                   }
                 });
 
-                // Ensure the button on every card is responsive and clickable
+                // Ensure the button on every card is clickable, tracks the plan, and turns vibrant green!
                 const btn = card.querySelector('button');
                 if (btn && !btn.getAttribute('data-ts-active')) {
                   btn.setAttribute('data-ts-active', 'true');
                   btn.style.cursor = 'pointer';
                   btn.style.pointerEvents = 'auto';
                   btn.style.opacity = '1';
+                  btn.style.transition = 'all 0.25s ease';
+
+                  btn.addEventListener('click', () => {
+                    // Set selected plan dynamically
+                    window.tsSelectedPlan = plan.key;
+
+                    // Reset all other buttons
+                    document.querySelectorAll('button[data-ts-active]').forEach(b => {
+                      b.style.backgroundColor = '';
+                      b.style.color = '';
+                      b.style.boxShadow = '';
+                    });
+
+                    // Turn clicked button into bright green!
+                    btn.style.backgroundColor = '#22C55E';
+                    btn.style.color = '#000000';
+                    btn.style.fontWeight = '800';
+                    btn.style.boxShadow = '0 0 25px rgba(34, 197, 94, 0.6)';
+                  });
                 }
               }
             }
