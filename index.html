@@ -6,24 +6,26 @@
     <meta name="theme-color" content="#050505" />
     <meta name="color-scheme" content="dark" />
     <meta name="facebook-domain-verification" content="agxd16hflz9qu8xn4yuesu3k7ipxtw" />
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2448286918930644');
-fbq('track', 'PageView');
-</script>
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Meta Pixel Code -->
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '2448286918930644');
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
     <title>TradeScribe — AI Operating System for Trade Businesses</title>
     <meta name="description" content="Speak your job notes. Create quotes, invoices, emails + monitor your business — all from one AI platform built for plumbers, electricians, HVAC, roofers, and contractors. 7-day free trial." />
     <meta name="keywords" content="AI for trades, contractor AI, plumber software, electrician invoicing, HVAC software, roofer quote app, AI quote generator, voice to invoice, contractor CRM, trade business automation" />
@@ -48,23 +50,6 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2448286918930644');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
     <script type="module" crossorigin src="/assets/index-DvK3ykwq.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BiKMcGoC.css">
 
@@ -162,6 +147,11 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
             const user = result.user;
             console.log("Successfully signed in: ", user.email);
             
+            // Track InitiateCheckout on Meta Pixel before redirecting
+            if (typeof fbq === 'function') {
+              fbq('track', 'InitiateCheckout');
+            }
+            
             // Redirect the user to Stripe Checkout with the LAUNCH30 coupon automatically applied!
             window.location.href = "https://buy.stripe.com/bJe9ATahdfLYauqfJ68N200?prefilled_promo_code=LAUNCH30";
             
@@ -239,7 +229,6 @@ src="https://www.facebook.com/tr?id=2448286918930644&ev=PageView&noscript=1"/>
               ssoContainer.appendChild(divider);
               
               // Insert the Google button and divider ABOVE the email input container
-              // We find the parent container of the email input to insert before it
               const label = document.querySelector('label');
               const targetElement = label && label.textContent.includes('EMAIL') ? label : emailInput;
               
