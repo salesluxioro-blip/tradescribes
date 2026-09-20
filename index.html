@@ -46,7 +46,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -239,58 +239,90 @@
         }
       });
 
-      // --- Dynamic Pricing Strikethrough & Badge Enhancement ---
-      const PLAN_DATA = {
-        'starter': { original: '$7.14', discounted: '$5.00', save: '30% OFF' },
-        'professional': { original: '$14.29', discounted: '$10.00', save: '30% OFF' },
-        'business': { original: '$35.71', discounted: '$25.00', save: '30% OFF' }
-      };
+      // --- Dynamic Pricing Strikethrough & All-Plan Enhancement ---
+      function updatePricingSection() {
+        let currencySymbol = '$';
+        let currencyCode = 'USD';
+        if (document.body.innerText.includes('£')) {
+          currencySymbol = '£';
+          currencyCode = 'GBP';
+        }
 
-      function updatePricingTags() {
-        const allElements = document.querySelectorAll('h1, h2, h3, h4, h5, div, p, span');
-        allElements.forEach(el => {
-          if (el.children.length === 0 || Array.from(el.children).every(c => c.tagName === 'SPAN' || c.tagName === 'STRONG')) {
-            const text = el.textContent.trim().toLowerCase();
-            
-            for (const [planKey, data] of Object.entries(PLAN_DATA)) {
-              if (text === planKey || text.startsWith(planKey + ' ') || text.includes(planKey + ' plan')) {
-                // Find parent pricing card
-                let card = el.parentElement;
-                for (let i = 0; i < 4; i++) {
-                  if (card && card.parentElement && card.parentElement.children.length >= 2) {
-                    break;
-                  }
-                  if (card && card.parentElement) card = card.parentElement;
-                }
-                
-                if (card && !card.getAttribute('data-ts-price-updated')) {
-                  const priceCandidates = card.querySelectorAll('div, p, span, h2, h3, h4');
-                  for (const pEl of priceCandidates) {
-                    const pText = pEl.textContent.trim();
-                    if ((pText.includes('$') || pText.includes('£') || pText.includes('/mo') || pText.includes('/month')) && !pEl.classList.contains('ts-price-container')) {
-                      pEl.classList.add('ts-price-container');
-                      pEl.innerHTML = `
-                        <div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0;">
-                          <span style="text-decoration:line-through;color:#71717A;font-size:0.85em;font-weight:600;">${data.original}</span>
-                          <span style="color:#22C55E;font-size:1.35em;font-weight:800;letter-spacing:-0.5px;">${data.discounted}</span>
-                          <span style="color:#A1A1AA;font-size:0.85em;font-weight:500;">/mo</span>
-                          <span style="background:#22C55E;color:#000000;font-size:11px;font-weight:800;padding:2px 8px;border-radius:9999px;text-transform:uppercase;letter-spacing:0.5px;box-shadow:0 2px 8px rgba(34,197,94,0.3);margin-left:4px;">You Save ${data.save}</span>
+        const planConfig = [
+          {
+            key: 'starter',
+            nameMatch: 'starter',
+            original: `${currencySymbol}7.14`,
+            discounted: `${currencySymbol}5.00`,
+            save: '30% OFF'
+          },
+          {
+            key: 'professional',
+            nameMatch: 'professional',
+            original: `${currencySymbol}14.29`,
+            discounted: `${currencySymbol}10.00`,
+            save: '30% OFF'
+          },
+          {
+            key: 'business',
+            nameMatch: 'business',
+            original: `${currencySymbol}35.71`,
+            discounted: `${currencySymbol}25.00`,
+            save: '30% OFF'
+          }
+        ];
+
+        planConfig.forEach(plan => {
+          // Find all elements containing the plan title
+          const allHeaders = document.querySelectorAll('h1, h2, h3, h4, h5, div, span, p');
+          allHeaders.forEach(el => {
+            if (el.textContent.trim().toLowerCase() === plan.nameMatch) {
+              // Find the card container
+              let card = el.parentElement;
+              for (let i = 0; i < 5; i++) {
+                if (card && card.querySelectorAll('button').length > 0) break;
+                if (card && card.parentElement) card = card.parentElement;
+              }
+
+              if (card) {
+                // Find and update the price element
+                const priceElements = card.querySelectorAll('div, p, span, h2, h3, h4');
+                priceElements.forEach(pEl => {
+                  const txt = pEl.textContent.trim();
+                  if ((txt.includes('$') || txt.includes('£') || txt.includes('/mo')) && (txt.includes('29') || txt.includes('79') || txt.includes('199') || txt.includes('7.14') || txt.includes('14.29') || txt.includes('35.71')) && !pEl.getAttribute('data-ts-styled')) {
+                    pEl.setAttribute('data-ts-styled', 'true');
+                    pEl.innerHTML = `
+                      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;margin:8px 0;">
+                        <div style="display:flex;align-items:baseline;justify-content:center;gap:8px;flex-wrap:wrap;">
+                          <span style="text-decoration:line-through;color:#71717A;font-size:18px;font-weight:600;">${plan.original}</span>
+                          <span style="color:#22C55E;font-size:38px;font-weight:800;letter-spacing:-1px;line-height:1;">${plan.discounted}</span>
+                          <span style="color:#A1A1AA;font-size:14px;font-weight:500;">/mo ${currencyCode}</span>
                         </div>
-                      `;
-                      card.setAttribute('data-ts-price-updated', 'true');
-                      break;
-                    }
+                        <div style="margin-top:6px;">
+                          <span style="background:rgba(34,197,94,0.18);color:#22C55E;border:1px solid rgba(34,197,94,0.4);font-size:12px;font-weight:800;padding:3px 10px;border-radius:9999px;text-transform:uppercase;letter-spacing:0.5px;display:inline-block;">🏷️ SAVE ${plan.save} (LAUNCH30)</span>
+                        </div>
+                      </div>
+                    `;
                   }
+                });
+
+                // Ensure the button on every card is responsive and clickable
+                const btn = card.querySelector('button');
+                if (btn && !btn.getAttribute('data-ts-active')) {
+                  btn.setAttribute('data-ts-active', 'true');
+                  btn.style.cursor = 'pointer';
+                  btn.style.pointerEvents = 'auto';
+                  btn.style.opacity = '1';
                 }
               }
             }
-          }
+          });
         });
       }
 
-      // Initial run and continuous interval to ensure React render is caught
-      updatePricingTags();
-      setInterval(updatePricingTags, 500);
+      // Initial run and continuous check to handle dynamic React rendering
+      updatePricingSection();
+      setInterval(updatePricingSection, 400);
 
       // Start observing the whole document for when the modal pops up or pricing renders
       observer.observe(document.body, { childList: true, subtree: true });
