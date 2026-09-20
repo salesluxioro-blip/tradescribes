@@ -46,7 +46,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -229,6 +229,7 @@
               ssoContainer.appendChild(divider);
               
               // Insert the Google button and divider ABOVE the email input container
+              // We find the parent container of the email input to insert before it
               const label = document.querySelector('label');
               const targetElement = label && label.textContent.includes('EMAIL') ? label : emailInput;
               
@@ -238,7 +239,60 @@
         }
       });
 
-      // Start observing the whole document for when the modal pops up
+      // --- Dynamic Pricing Strikethrough & Badge Enhancement ---
+      const PLAN_DATA = {
+        'starter': { original: '$7.14', discounted: '$5.00', save: '30% OFF' },
+        'professional': { original: '$14.29', discounted: '$10.00', save: '30% OFF' },
+        'business': { original: '$35.71', discounted: '$25.00', save: '30% OFF' }
+      };
+
+      function updatePricingTags() {
+        const allElements = document.querySelectorAll('h1, h2, h3, h4, h5, div, p, span');
+        allElements.forEach(el => {
+          if (el.children.length === 0 || Array.from(el.children).every(c => c.tagName === 'SPAN' || c.tagName === 'STRONG')) {
+            const text = el.textContent.trim().toLowerCase();
+            
+            for (const [planKey, data] of Object.entries(PLAN_DATA)) {
+              if (text === planKey || text.startsWith(planKey + ' ') || text.includes(planKey + ' plan')) {
+                // Find parent pricing card
+                let card = el.parentElement;
+                for (let i = 0; i < 4; i++) {
+                  if (card && card.parentElement && card.parentElement.children.length >= 2) {
+                    break;
+                  }
+                  if (card && card.parentElement) card = card.parentElement;
+                }
+                
+                if (card && !card.getAttribute('data-ts-price-updated')) {
+                  const priceCandidates = card.querySelectorAll('div, p, span, h2, h3, h4');
+                  for (const pEl of priceCandidates) {
+                    const pText = pEl.textContent.trim();
+                    if ((pText.includes('$') || pText.includes('£') || pText.includes('/mo') || pText.includes('/month')) && !pEl.classList.contains('ts-price-container')) {
+                      pEl.classList.add('ts-price-container');
+                      pEl.innerHTML = `
+                        <div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0;">
+                          <span style="text-decoration:line-through;color:#71717A;font-size:0.85em;font-weight:600;">${data.original}</span>
+                          <span style="color:#22C55E;font-size:1.35em;font-weight:800;letter-spacing:-0.5px;">${data.discounted}</span>
+                          <span style="color:#A1A1AA;font-size:0.85em;font-weight:500;">/mo</span>
+                          <span style="background:#22C55E;color:#000000;font-size:11px;font-weight:800;padding:2px 8px;border-radius:9999px;text-transform:uppercase;letter-spacing:0.5px;box-shadow:0 2px 8px rgba(34,197,94,0.3);margin-left:4px;">You Save ${data.save}</span>
+                        </div>
+                      `;
+                      card.setAttribute('data-ts-price-updated', 'true');
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Initial run and continuous interval to ensure React render is caught
+      updatePricingTags();
+      setInterval(updatePricingTags, 500);
+
+      // Start observing the whole document for when the modal pops up or pricing renders
       observer.observe(document.body, { childList: true, subtree: true });
     </script>
   </body>
